@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{name}}</title>
+    </head>
+
+    <a href="/logout">ログアウトする</a>
+    
+    <body>
+        {% if name == "keisuke" %}
+        <h1>{{name}}'s special page</h1>
+        {% elif name %}
+        <h1>{{name}}'s page</h1>
+        {% else %}
+        <h1>page</h1>
+        {% endif %}
+        {% for word in team %}
+        <p>{{word}}</p>
+        {% endfor %}
+        <form action="/index" method="POST">
+            <input type="text" name="name" placeholder="Name">
+            <input type="submit" value="Submit">
+        </form>
+        <form action="/add" method="post">
+            <input type="text" name="title" placeholder="title">
+            <input type="text" name="body" placeholder="body">
+            <input type="submit" value="Add">
+        </form>
+        {% for onegai in all_onegai %}
+        <p>{{onegai.title}}：{{onegai.body}}（{{onegai.date}}）</p>
+        {% endfor %}
+        <img src="/static/images/madridvsatletico.jpg" alt="madridderby">
+    </body>
+</html>
